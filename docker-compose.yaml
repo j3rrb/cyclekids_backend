@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  backend:
+    container_name: cyclekids_server
+    env_file:
+      - .env
+    restart: always
+    build:
+      context: .
+    ports:
+      - 8000:80
+  db:
+    container_name: cyclekids_db
+    env_file:
+      - .env
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    image: postgres:13
+    expose:
+      - 5432
