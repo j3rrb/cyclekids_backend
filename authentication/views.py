@@ -8,6 +8,7 @@ from rest_framework.exceptions import APIException
 
 
 class RegisterView(APIView):
+    permission_classes = ()
 
     @staticmethod
     def post(req: Request):

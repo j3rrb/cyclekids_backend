@@ -1,6 +1,6 @@
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView, RetrieveAPIView, \
     DestroyAPIView, CreateAPIView, RetrieveUpdateAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from posts.models import Post
@@ -28,7 +28,7 @@ class UpdatePostView(RetrieveUpdateAPIView):
 
 class ListPostView(ListAPIView):
     serializer_class = PostSerializer
-    queryset = Post.objects.filter(published=False)
+    queryset = Post.objects.filter(published=True)
     permission_classes = (IsAuthenticated,)
 
 
